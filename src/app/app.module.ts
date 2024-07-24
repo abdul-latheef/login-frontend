@@ -16,6 +16,7 @@ import { UpdatePopupComponent } from './update-popup/update-popup.component';
 import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
 import { provideHttpClient, withFetch } from '@angular/common/http';
+import {MatTableModule} from '@angular/material/table';
 
 
 @NgModule({
@@ -35,6 +36,7 @@ import { provideHttpClient, withFetch } from '@angular/common/http';
     ToastrModule.forRoot(),
     NgbModule,
     MatRadioModule,
+    MatTableModule
   ],
   providers: [
     provideClientHydration(),
