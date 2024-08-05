@@ -17,6 +17,7 @@ import { NgbModule } from '@ng-bootstrap/ng-bootstrap';
 import {MatRadioModule} from '@angular/material/radio';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
+import { MatPaginatorModule } from '@angular/material/paginator';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import {MatTableModule} from '@angular/material/table';
     ToastrModule.forRoot(),
     NgbModule,
     MatRadioModule,
-    MatTableModule
+    MatTableModule,
+    MatPaginatorModule
   ],
   providers: [
     provideClientHydration(),
