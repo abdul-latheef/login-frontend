@@ -5,7 +5,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { AppComponent } from './app.component';
 import { provideAnimationsAsync } from '@angular/platform-browser/animations/async';
 import { MaterialModule } from './material.module';
-import { ReactiveFormsModule } from '@angular/forms';
+import { ReactiveFormsModule, FormsModule } from '@angular/forms';
 
 import { ToastrModule } from 'ngx-toastr';
 import { LoginComponent } from './login/login.component';
@@ -18,6 +18,10 @@ import {MatRadioModule} from '@angular/material/radio';
 import { provideHttpClient, withFetch } from '@angular/common/http';
 import {MatTableModule} from '@angular/material/table';
 import { MatPaginatorModule } from '@angular/material/paginator';
+import {MatAutocompleteModule} from '@angular/material/autocomplete';
+import {MatInputModule} from '@angular/material/input';
+import {MatFormFieldModule} from '@angular/material/form-field';
+
 
 
 @NgModule({
@@ -38,7 +42,11 @@ import { MatPaginatorModule } from '@angular/material/paginator';
     NgbModule,
     MatRadioModule,
     MatTableModule,
-    MatPaginatorModule
+    MatPaginatorModule,
+    MatAutocompleteModule,
+    MatInputModule,
+    MatFormFieldModule,
+    FormsModule
   ],
   providers: [
     provideClientHydration(),

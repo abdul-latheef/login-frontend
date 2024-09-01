@@ -30,24 +30,36 @@ export class LoginComponent {
   proceedLogin(){
 
     const userName = this.loginForm.value.userName;
-    const password = this.loginForm.value.password;
+const password = this.loginForm.value.password;
+let userparams = {
+  userName: userName
+}
+this.authService.getUserByName(userparams).subscribe(result => {
+  this.userData = result;
 
-    this.authService.getUserByName(userName).subscribe(result => {
-      this.userData = result;
-      if(password === this.userData.data[0].password)
-      {
-        if(this.userData.data[0].isActive){
-          sessionStorage.setItem("username", this.userData.data[0].userName);
-          sessionStorage.setItem("role", this.userData.data[0].role);
-          this.router.navigate(['']);
-        }else{
-          this.toastr.warning("please contact admin", "Not active user")
-        }
-      } else{
-        this.toastr.warning("invalid credentials")
+  // Check if user data exists and is not empty
+  if (this.userData?.data) {
+    const user = this.userData.data;
+
+    // Compare passwords
+    if (password === user.password) {
+      if (user.isActive) {
+        sessionStorage.setItem("username", user.userName);
+        sessionStorage.setItem("role", user.role);
+        this.router.navigate(['']);
+      } else {
+        this.toastr.warning("Please contact admin", "Not active user");
       }
-      
-    })
+    } else {
+      this.toastr.warning("Invalid credentials");
+    }
+  } else {
+    this.toastr.warning("User not found");
+  }
+}, error => {
+  console.error("Error fetching user data:", error);
+  this.toastr.error("An error occurred while fetching user data");
+});
 
   }
 

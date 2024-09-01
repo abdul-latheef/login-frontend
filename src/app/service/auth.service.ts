@@ -14,15 +14,19 @@ export class AuthService {
 
   getAllUser()
   {
-    return this.http.get(`${this.apiURL}/users`)
+    return this.http.get(`${this.apiURL}/users/getUsers`)
   }
 
   addUser(inputData: any) {
-    return this.http.post(`${this.apiURL}/users`, inputData);
+    return this.http.post(`${this.apiURL}/users/createUser`, inputData);
   }
 
   getUserByName(name:any){
-    return this.http.get(`${this.apiURL}/users`, name)
+    return this.http.post(`${this.apiURL}/users/login`, name)
+  }
+
+  getAllUsersName(){
+    return this.http.get(`${this.apiURL}/users/getAllUsersName`)
   }
 
   isLoggedIn(){

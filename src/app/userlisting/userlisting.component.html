@@ -1,5 +1,19 @@
 
 <div class="container">
+    <div>
+      <mat-form-field class="example-full-width">
+        <mat-label>User Name</mat-label>
+        <input type="text"
+               matInput
+               [formControl]="formcontrol"
+               [matAutocomplete]="auto"
+               (keydown)="onKeydown($event)"
+               >
+            <mat-autocomplete #auto="matAutocomplete" [displayWith]="displayFn">
+              <mat-option *ngFor="let item of filterOptions | async" [value]="item">{{item?.id}} - {{item?.name}}</mat-option>
+            </mat-autocomplete>
+      </mat-form-field>
+    </div>
     <div class="mat-elevation-z8">
         <table mat-table [dataSource]="dataSource" matSort>
       
